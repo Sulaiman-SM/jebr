@@ -3,6 +3,8 @@ use std::fs::File;
 use std::path::Path;
 use std::env::args;
 
+mod parser;
+
 fn main() {
     let args: Vec<String> = args().collect();
     if args.len() < 2 {
@@ -23,5 +25,9 @@ fn main() {
         Err(why) => panic!("couldn't read {}: {}", display, why),
         Ok(source) => source,
     };
+
+    // instantiate parser and parse source code
+    let _my_parser = parser::Parser::new().parse(buf);
+    // my_parser.parse(buf);
 
 }
